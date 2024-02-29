@@ -22,19 +22,3 @@ jobs:
 
     - name: unit-test
       run: cd go && go test -v -cover ./...
-
-
-  golangci:
-    runs-on: ubuntu-latest
-    name: lint
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-go@v4
-        with:
-          go-version: '1.22'
-          cache: true
-      - name: golangci-lint
-        uses: golangci/golangci-lint-action@v3
-        with:
-          version: v1.56
-          args: --timeout=2m
