@@ -51,12 +51,22 @@ func (r *randomGen) NextNum() (n int) {
 
 	// Find location in the cumulative probability distribution
 	// and return value at corresponding index
-	for i, v := range r.cumulativeProb {
-		if randFloat < v {
-			n = r.randomNums[i]
-			break
+	index := binarySearch(r.cumulativeProb, randFloat)
+	return r.randomNums[index]
+}
+
+func binarySearch(arr []float64, target float64) int {
+	left := 0
+	right := len(arr) - 1
+
+	for left < right {
+		mid := left + (right-left)/2
+		if arr[mid] < target {
+			left = mid + 1
+		} else {
+			right = mid
 		}
 	}
 
-	return
+	return left
 }

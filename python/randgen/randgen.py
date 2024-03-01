@@ -34,7 +34,21 @@ class RandomGen(object):
         the initialized probabilities
         """
         rnd = random.random()
-        for num, prob in zip(self._random_nums, self._domain):
-            if rnd < prob:
-                return num
+        return self._random_nums[self.binary_search(self._domain, rnd)]
 
+    def binary_search(self, arr, target):
+        """
+        Binary search is a O(log N) lookup for the index corresponding to the value in the array
+        closest to the target
+        """
+        left = 0
+        right = len(arr) - 1
+
+        while left < right:
+            mid = left + (right - left) // 2
+            if arr[mid] < target:
+                left = mid + 1
+            else:
+                right = mid
+                
+        return left
