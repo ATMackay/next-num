@@ -26,13 +26,13 @@ class TestRandomGen(unittest.TestCase):
             # First call, should return 0 as the random value is between 0 and 0.01
             self.assertEqual(random_gen.next_num(), -1)
 
-            # Second call, should return 1 as the random value is between 0.31 and 0.58
+            # Second call, should return 1 as the random value is between 0.01 and 0.31
             self.assertEqual(random_gen.next_num(), 0)
 
-            # Second call, should return 1 as the random value is between 0.31 and 0.58
+            # Second call, should return 1 as the random value is between 0.31 and 0.89
             self.assertEqual(random_gen.next_num(), 1)
 
-            # Third call, should return 2 as the random value is between 0.91 and 0.99
+            # Third call, should return 2 as the random value is between 0.89 and 0.99
             self.assertEqual(random_gen.next_num(), 2)
 
             # Forth call, should return 3 as the random value is between 0.99 and 1.0
